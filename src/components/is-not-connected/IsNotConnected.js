@@ -15,7 +15,7 @@ const TABS = {
 
 const IsNotConnected = ({ t, apiUrl, connected, sameOrigin, ipfsApiAddress, doUpdateIpfsApiAddress }) => {
   const [activeTab, setActiveTab] = useState(TABS.UNIX)
-  const defaultDomains = ['http://localhost:3000', 'http://127.0.0.1:5001', 'https://webui.ipfs.io']
+  const defaultDomains = ['http://localhost:3000', 'http://172.26.71.168:3000','http://127.0.0.1:5001', 'https://webui.ipfs.io']
   const origin = window.location.origin
   const addOrigin = defaultDomains.indexOf(origin) === -1
   return (

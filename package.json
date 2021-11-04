@@ -175,5 +175,6 @@
         "@types/ipfs-core-types"
       ]
     }
-  }
+  },
+  "proxy": "https://ipfs.io"
 }

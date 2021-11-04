@@ -37,12 +37,12 @@ const calculateWidth = (windowWidth) => {
 const calculateHeight = (width) => {
   if (width > 960) {
     if (window.innerHeight < 940) {
-      return (window.innerHeight - 180) * 0.6
+      return (window.innerHeight - 180) * 1
     }
     return width * 0.273
   }
 
-  return width * 0.5
+  return width * 0.4
 }
 
 const WorldMap = ({ t, className, selectedPeers, doSetSelectedPeers }) => {
@@ -113,7 +113,7 @@ const WorldMap = ({ t, className, selectedPeers, doSetSelectedPeers }) => {
         <div className='f6 p2 no-select flex items-center'>
           <span className='f6 charcoal-muted pr3'>{'Machines'}: </span>
           <i className='mapDotExplanation mr1' style={{ width: getDotsSize(1) * 2, height: getDotsSize(1) * 2, backgroundColor: getDotsColor(1) }}></i>1-5
-          <i className='mapDotExplanation ml3 mr1' style={{ width: getDotsSize(5) * 2, height: getDotsSize(5) * 2, backgroundColor: getDotsColor(5) }}></i> 5-10
+          <i className='mapDotExplanation ml3 mr1' style={{ width: getDotsSize(6) * 2, height: getDotsSize(6) * 2, backgroundColor: getDotsColor(6) }}></i> 6-10
           <i className='mapDotExplanation ml3 mr1' style={{ width: getDotsSize(11) * 2, height: getDotsSize(11) * 2, backgroundColor: getDotsColor(11) }}></i>11+
         </div>
       </div>
@@ -137,14 +137,14 @@ const GeoPath = ({ width, height, children }) => {
 
 const getDotsSize = (numberOfDots) => {
   if (numberOfDots < 5) return 5
-  if (numberOfDots < 10) return 8
+  if (numberOfDots < 10) return 6
   return 8
 }
 
 const getDotsColor = (numberOfDots) => {
   if (numberOfDots < 5) return 'rgba(255, 107, 34, 0.6)'
-  if (numberOfDots < 10) return 'rgba(255, 107, 34, 0.8)'
-  return 'rgba(255, 107, 34, 0.8)'
+  if (numberOfDots < 10) return 'rgba(211, 211, 0, 1)'
+  return 'rgba(255, 0, 0, 0.8)'
 }
 
 // Just the dots on the map, this gets called a lot.

@@ -72,7 +72,7 @@ bundle.doConnectSwarm = (addr, permanent) => async ({ dispatch, getIpfs, store }
   const ipfs = getIpfs()
   try {
     await ipfs.swarm.connect(addr)
-
+    console.log('addr::', addr)
     if (permanent) {
       const maddr = multiaddr(addr)
       const peerId = maddr.getPeerId()
@@ -80,6 +80,7 @@ bundle.doConnectSwarm = (addr, permanent) => async ({ dispatch, getIpfs, store }
 
       // TODO: switch to ipfs.swarm.peering when https://github.com/ipfs/go-ipfs/pull/8147 ships
       let peers = (await ipfs.config.get('Peering.Peers')) || []
+      console.log('peers::', peers)
       const preexisting = peers.find(p => p.ID === peerId)
       if (preexisting) {
         if (!preexisting.Addrs.find(a => a === rawAddr)) {

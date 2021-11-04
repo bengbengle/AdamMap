@@ -68,18 +68,19 @@ async function downloadSingle (file, gatewayUrl, apiUrl) {
  * @returns {Promise<CID>}
  */
 export async function makeCIDFromFiles (files, ipfs) {
-  let cid = await ipfs.object.new({ template: 'unixfs-dir' })
+  return '0'
+  // let cid = await ipfs.object.new({ template: 'unixfs-dir' })
 
-  for (const file of files) {
-    cid = await ipfs.object.patch.addLink(cid, {
-      name: file.name,
-      // @ts-ignore - can this be `null` ?
-      size: file.size,
-      cid: file.cid
-    })
-  }
+  // for (const file of files) {
+  //   cid = await ipfs.object.patch.addLink(cid, {
+  //     name: file.name,
+  //     // @ts-ignore - can this be `null` ?
+  //     size: file.size,
+  //     cid: file.cid
+  //   })
+  // }
 
-  return cid
+  // return cid
 }
 
 /**

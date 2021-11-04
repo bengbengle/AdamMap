@@ -1,9 +1,9 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 // Components
-import GlyphDots from '../../icons/GlyphDots'
-import Checkbox from '../../components/checkbox/Checkbox'
-import FileIcon from '../../files/file-icon/FileIcon'
+// import GlyphDots from '../../icons/GlyphDots'
+// import Checkbox from '../../components/checkbox/Checkbox'
+// import FileIcon from '../../files/file-icon/FileIcon'
 // Styles
 // import './LoadingAnimation.css'
 
@@ -38,7 +38,7 @@ import FileIcon from '../../files/file-icon/FileIcon'
 // )
 
 const LoadingAnimation = ({ t }) => (
-  <div className='LoadingAnimation'>
+  <div className=''>
     {/* <div className='LoadingAnimationSwipe'> */}
       {/* <FakeHeader t={t} />
       <FakeFile nameWidth={50} />

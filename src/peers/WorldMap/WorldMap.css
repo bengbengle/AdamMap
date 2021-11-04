@@ -11,6 +11,10 @@
     pointer-events: all;
     animation: appearDot 0.3s ease-in-out both;
 }
+.mapDot:hover {
+    cursor: pointer;
+    /* fill: ; */
+}
 
 .no-events {
     pointer-events: none;

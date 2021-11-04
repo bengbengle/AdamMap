@@ -169,7 +169,7 @@ const getPublicIP = memoize((identity) => {
       const addr = Multiaddr(maddr).nodeAddress()
 
       if ((ip.isV4Format(addr.address) || ip.isV6Format(addr.address)) && !ip.isPrivate(addr.address)) {
-        console.log('addr.address::', addr.address)
+        // console.log('addr.address::', addr.address)
         return addr.address
       }
     } catch (_) {}
@@ -216,7 +216,8 @@ class PeerLocationResolver {
       maxAge: ms.weeks(1),
       ...opts.cache
     })
-
+    window.global_cache = this.geoipCache
+    console.log('geoipCache::', this.geoipCache, opts)
     this.failedAddrs = HLRU(500)
 
     this.queue = new PQueue({
@@ -243,9 +244,11 @@ class PeerLocationResolver {
       if (this.failedAddrs.has(ipv4Addr)) {
         continue
       }
+      // console.log('ipv4Addr::', ipv4Addr)
       // maybe we have it cached by ipv4 address already, check that.
       // 也许我们已经通过 ipv4 地址缓存了它，检查一下
       const location = await this.geoipCache.get(ipv4Addr)
+      // console.log('location::', location)
       if (location) {
         res[peerId] = location
         continue
@@ -260,6 +263,7 @@ class PeerLocationResolver {
       this.geoipLookupPromises.set(ipv4Addr, this.queue.add(async () => {
         try {
           const data = await geoip.lookup(getIpfs(), ipv4Addr)
+          console.log('data::', data)
           await this.geoipCache.set(ipv4Addr, data)
         } catch (e) {
           // mark this one as failed so we don't retry again
@@ -270,6 +274,7 @@ class PeerLocationResolver {
         }
       }))
     }
+    // console.log('res:::', res)
     return res
   }
 
