@@ -69,12 +69,12 @@ const WorldMap = ({ t, className, selectedPeers, doSetSelectedPeers }) => {
 
     const { x, y, width, height } = element.getBBox()
 
-    doSetSelectedPeers({ peerIds, left: `${x + width / 2}px`, top: `${y - height / 2}px` })
+    doSetSelectedPeers({ peerIds, left: `${x + width / 2 - 100}px`, top: `${y - height / 2}px` })
   }, [doSetSelectedPeers, selectedTimeout])
 
   const handleMapPinMouseLeave = useCallback(() => {
     setSelectedTimeout(
-      setTimeout(() => doSetSelectedPeers({}), 6000)
+      setTimeout(() => doSetSelectedPeers({}), 6000000)
     )
   }, [doSetSelectedPeers])
 
@@ -205,7 +205,9 @@ const PeerInfo = connect('selectPeerLocationsForSwarm', ({ ids, peerLocationsFor
               </span>
               &nbsp;
               <span className="charcoal-muted">
-                {peer.poolname || '???'}
+                {
+                  window.innerWidth >= 1000 && (peer.poolname.length > 10 ? peer.poolname.substr(0, 10) + '...' : peer.poolname)
+                }
               </span>
             </div>
             <span className="gray ml1"> ( { peer.power + 'T' })</span>
